@@ -8,7 +8,10 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     // filename: 'build.js'
-    filename: 'vue-at-textarea.js'
+    filename: 'vue-at-textarea.js',
+    library: 'vueAtTextarea',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="chat-warp">
-      <at-textarea
+      <vue-at-textarea
         v-model="content"
         :members="members"
         @change="handleChange"
@@ -11,12 +11,8 @@
 </template>
 
 <script>
-import atTextarea from './components/atTextarea'
 export default {
   name: 'App',
-  components: {
-    atTextarea
-  },
   data() {
     return {
       content: '@2李丝丝 ',
