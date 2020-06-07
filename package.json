@@ -6,7 +6,7 @@
     "dist": "dist"
   },
   "version": "0.0.1",
-  "author": "YokoChen <8144064@qq.com>",
+  "author": "YokoChen <341511269@qq.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -19,7 +19,7 @@
   },
   "bugs": {
     "url": "https://github.com/yokochen222/vue-at-textarea/issues",
-    "email": "8144064@qq.com"
+    "email": "341511269@qq.com"
   },
   "keywords": [
     "vue",
