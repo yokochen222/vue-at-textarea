@@ -6,6 +6,7 @@
       v-model="content"
       @blur="handleBlur"
       :disabled="disabled"
+      :maxlength="maxlength"
       :autofocus="autofocus"
       @keydown="handleKeyDown"
       @input="handleInput"
@@ -67,6 +68,10 @@ export default {
     disabled:{
       type: Boolean,
       default: false
+    },
+    maxlength: {
+      type: [Number, String],
+      default: 10
     }
   },
   provide() {

@@ -142,6 +142,7 @@ Attributes | 类型 |  默认值 | 说明
 -|-|-|-
 value | String | '' | 可使用v-model 双向绑定 |
 members | Array | [] | 弹出窗用户列表 |
+maxlength | Number| ''| 输入最大字符数限制 |
 memberFilter | Function | `default(item, chunk) { return item[this.rowProps.name].toLowerCase().indexOf(chunk.toLowerCase()) > -1 }` | 输入@后过滤用户 |
 rowProps | Object | {id: 'ID', name: 'Name', avatar: 'Avatar'} | 用户数据必要属性 |
 disabled | Boolean | false | 是否禁用输入
