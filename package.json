@@ -5,7 +5,7 @@
   "directories": {
     "dist": "dist"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "YokoChen <8144064@qq.com>",
   "license": "MIT",
   "private": false,

@@ -16,7 +16,7 @@
     >
       <img :src="user.Avatar" class="at-user-popup-item-avatar" />
       <div class="at-user-popup-item-name">
-        <span v-text="user.Name"></span>
+        <span v-text="user[rowProps.name]"></span>
       </div>
     </div>
   </div>
@@ -43,6 +43,16 @@ export default {
           left: 0,
           top: 0,
           height: NaN
+        }
+      }
+    },
+    rowProps: {
+      type: Object,
+      default() {
+        return {
+          id: 'ID',
+          name: 'Name',
+          avatar: 'Avatar'
         }
       }
     }

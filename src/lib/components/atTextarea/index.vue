@@ -4,8 +4,8 @@
       class="chat-textarea-input"
       ref="textarea"
       v-model="content"
+      :disabled="disabled"
       :autofocus="autofocus"
-      @blur="handleBlur"
       @keydown="handleKeyDown"
       @input="handleInput"
     ></textarea>
@@ -13,6 +13,7 @@
       :visible="visible"
       :members="matchedMembers"
       :at-info="atInfo"
+      :row-props="rowProps"
       @atUser="handleAtUser"
       ref="popup"
     />
@@ -37,21 +38,34 @@ export default {
     },
     members: {
       type: Array,
-      required: true
+      required: true,
+      default() {
+        return []
+      }
     },
     memberFilter: {
       type: Function,
       default(item, chunk) {
-        return item.Name.toLowerCase().indexOf(chunk.toLowerCase()) > -1
+        return item[this.rowProps.name].toLowerCase().indexOf(chunk.toLowerCase()) > -1
       }
-    },
-    nameKey: {
-      type: String,
-      default: 'Name'
     },
     autofocus: {
       type: Boolean,
       default: true
+    },
+    rowProps: {
+      type: Object,
+      default() {
+        return {
+          id: 'ID',
+          name: 'Name',
+          avatar: 'Avatar'
+        }
+      }
+    },
+    disabled:{
+      type: Boolean,
+      default: false
     }
   },
   provide() {
@@ -90,9 +104,9 @@ export default {
       if (matchedAtNames) {
         matchedAtNames.forEach((item) => {
           for(let i = 0; i < members.length; i++) {
-            if (item.includes(members[i][this.nameKey])) {
+            if (item.includes(members[i][this.rowProps.name])) {
               // 用户去重
-              if (!JSON.stringify(users).includes(members[i][this.nameKey])) {
+              if (!JSON.stringify(users).includes(members[i][this.rowProps.name])) {
                 users.push(members[i])
               }
               break
@@ -124,16 +138,14 @@ export default {
   },
   methods: {
     // 检测输入框失去焦点
-    handleBlur(e) {
-      this.getCursorPosition(e.target)
-      // this.visible = false
-    },
+    // handleBlur(e) {
+    //   this.getCursorPosition(e.target)
+    // },
     /***
      * 检测键盘事件 快捷键绑定
      *  */ 
     handleKeyDown(e) {
       this.getCursorPosition(e.target)
-
       /**
        * 检测当前是否已经打开了 用户选择弹出窗口
        * 如已经弹出则 阻止键盘默认事件 
@@ -211,7 +223,7 @@ export default {
     // },
     // 将用户名称插入到光标位置
     handleAtUser(user) {
-      const text = user.Name+' '
+      const text = user[this.rowProps.name]+' '
       const textarea = this.$refs.textarea
       const start = this.atInfo.atCharIndex + 1
       const end = textarea.selectionEnd

@@ -133,3 +133,43 @@ export default {
 }
 </script>
 ```
+
+
+
+### Props
+
+Attributes | 类型 |  默认值 | 说明  
+-|-|-|-
+value | String | '' | 可使用v-model 双向绑定 |
+members | Array | [] | 弹出窗用户列表 |
+memberFilter | Function | `default(item, chunk) { return item[this.rowProps.name].toLowerCase().indexOf(chunk.toLowerCase()) > -1 }` | 输入@后过滤用户 |
+rowProps | Object | {id: 'ID', name: 'Name', avatar: 'Avatar'} | 用户数据必要属性 |
+disabled | Boolean | false | 是否禁用输入
+autofocus | Boolean | true | 是否自动获取焦点
+
+### Events
+事件名称 | 回调参数 |  说明
+-|-|-|-
+change| { matchedAtNames: [] matchedAtUsers: []value: "@" } | 返回输入值，匹配到的用户名称，匹配到的用户行
+
+
+#### 注意事项
+- 在组件外部需要包裹一层 并设置定位
+- vue-at-textarea 组件内部是 `position:absolute` 以满足当前输入框宽高
+```html
+<div class="editor">
+  <vue-at-textarea
+    v-model="content"
+    @change="handleChange"
+    :members="members"
+  />
+</div>
+<style>
+.editor {
+  width: 500px;
+  height: 200px;
+  border: 1px solid #eee;
+  position: relative;
+}
+</style>
+```
