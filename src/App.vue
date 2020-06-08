@@ -1,16 +1,11 @@
 <template>
   <div id="app">
-    <div class="chat-warp">
-      <vue-at-textarea
-        v-model="content"
-        :members="members"
-        @change="handleChange"
-      />
-    </div>
+    234324
   </div>
 </template>
 
 <script>
+import VueAtTextarea from '../dist/vue-at-textarea'
 export default {
   name: 'App',
   data() {

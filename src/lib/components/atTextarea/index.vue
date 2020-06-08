@@ -20,14 +20,13 @@
 </template>
 <script>
 import getCaretCoordinates from 'textarea-caret'
-
 import atUserPopup from './atUserPopup'
 import {
   getCursorPosition,
   getAtAndIndex
 } from './utils'
 export default {
-  name: 'vueAtTextarea',
+  name: 'VueAtTextarea',
   components: {
     atUserPopup
   },

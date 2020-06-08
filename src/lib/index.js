@@ -1,8 +1,8 @@
-import atTextarea from '../components/atTextarea'
+import VueAtTextarea from './components/atTextarea'
 
-const AtTextarea = {
+const atTextarea = {
   install: function (Vue) {
-    Vue.component(atTextarea.name, atTextarea)
+    Vue.component(VueAtTextarea.name, VueAtTextarea)
   }
 }
 
@@ -11,5 +11,8 @@ if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(atTextarea)
 }
 
+export {
+  VueAtTextarea
+}
 
-export default AtTextarea
+export default atTextarea

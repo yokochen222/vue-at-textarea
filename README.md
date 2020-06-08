@@ -1,18 +1,21 @@
 # vue-at-textarea
 
-> A Vue.js project
+> vue at textarea 使用textarea输入框实现@功能
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
+# 使用
 
-# serve with hot reload at localhost:8080
-npm run dev
+### 全局引入
+```javascript
 
-# build for production with minification
-npm run build
+import VueAtTextarea from 'vue-at-textarea'
+Vue.use(VueAtTextarea)
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+### 局部引入
+```javascript
+
+import { VueAtTextarea } from 'vue-at-textarea'
+
+```
