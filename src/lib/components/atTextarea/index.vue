@@ -4,6 +4,7 @@
       class="chat-textarea-input"
       ref="textarea"
       v-model="content"
+      @blur="handleBlur"
       :disabled="disabled"
       :autofocus="autofocus"
       @keydown="handleKeyDown"
@@ -80,6 +81,12 @@ export default {
         this.content = val
       }
     },
+    members: {
+      immediate: true,
+      handler(val) {
+        this.visible = false
+      }
+    },
     content: {
       immediate: true,
       handler(val) {
@@ -138,9 +145,9 @@ export default {
   },
   methods: {
     // 检测输入框失去焦点
-    // handleBlur(e) {
-    //   this.getCursorPosition(e.target)
-    // },
+    handleBlur(e) {
+      this.getCursorPosition(e.target)
+    },
     /***
      * 检测键盘事件 快捷键绑定
      *  */ 
@@ -158,9 +165,6 @@ export default {
           e.stopPropagation()
           this.$refs.popup.handleKeyDown(e)
         }
-        // if (e.keyCode === 8) {
-        //   this.handleDelete(e)
-        // }
         /**
          * 检测用户是否 按下了  左键 或者 右键
          * 阻止默认事件行为 ， 避免插入文本位置不对
@@ -217,10 +221,14 @@ export default {
     closePopUp() {
       this.visible = false
     },
-    // // 文本删除事件
-    // handleDelete() {
-    //   console.log(this.matchedAtArr)
-    // },
+    // 插入字符至最后一次光标位置
+    insertValue(val) {
+      const textarea = this.$refs.textarea
+      const frontText = textarea.value.slice(0, this.lastCursorPos.start)
+      const behindText = textarea.value.slice(this.lastCursorPos.end)
+      const newText = frontText + val + behindText
+      this.content = newText
+    },
     // 将用户名称插入到光标位置
     handleAtUser(user) {
       const text = user[this.rowProps.name]+' '

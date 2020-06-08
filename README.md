@@ -173,3 +173,37 @@ change| { matchedAtNames: [] matchedAtUsers: []value: "@" } | 返回输入值，
 }
 </style>
 ```
+
+
+### Methods
+
+方法名称 | 参数 |说明  
+-|-|-
+closePopUp | - |关闭选择用户弹出窗口
+insertValue | string |关闭选择用户弹出窗口
+
+- 调用示例
+```html
+<template>
+  <button @click="handleInsert">插入内容</button>
+  <div class="chat-footer">
+    <vue-at-textarea
+      ref="textarea"
+      v-model="content"
+      @change="handleChange"
+      :members="members"
+    />
+  </div>
+</template>
+<script>
+  export default {
+    methods: {
+      handleInsert() {
+        // 如果需要插入@用户字符串 在用户名字后面 必须留有空格 @黄坤 
+        // 插入该用户后 会自动返回 相匹配的对应用户 触发 change 事件
+        this.$refs.textarea.insertValue('@黄坤 ')
+      }
+    }
+  }
+</script>
+```
