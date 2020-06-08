@@ -3,6 +3,9 @@
 > vue at textarea 使用textarea输入框实现@功能
 
 
+# 截图示例
+![screenshort](https://github.com/yokochen222/vue-at-textarea/blob/master/screenshots/1.png?raw=**true**)
+![screenshort](https://github.com/yokochen222/vue-at-textarea/blob/master/screenshots/2.png?raw=**true**)
 # 使用
 
 ### 全局引入
