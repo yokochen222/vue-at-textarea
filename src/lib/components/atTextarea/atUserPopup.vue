@@ -14,7 +14,7 @@
       @mouseenter="handleMouseEnter(index, user)"
       @click="handleSelected(user)"
     >
-      <img :src="user.Avatar" class="at-user-popup-item-avatar" />
+      <img :src="user[rowProps.avatar]" class="at-user-popup-item-avatar" />
       <div class="at-user-popup-item-name">
         <span v-text="user[rowProps.name]"></span>
       </div>
